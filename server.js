@@ -1,17 +1,13 @@
 require('dotenv').config();
 const fs = require('fs');
 const express = require('express');
-const cors = require('cors'); // Add this line
+const cors = require('cors');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 const app = express();
 
-// Enable CORS for the Vercel deployment and localhost
-app.use(cors({
-  origin: ['https://devheat-hackathon.vercel.app', 'http://localhost:3000', '*'],
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+// Enable CORS for all origins
+app.use(cors()); // allows any origin
 
 app.use(express.json());
 app.use(express.static('public'));
